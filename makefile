@@ -1,15 +1,2 @@
-```make
-CC = gcc
-CFLAGS = -Wall
-
-TARGET = main
-SRCS = main.c
-
-all: $(TARGET)
-
-$(TARGET): $(SRCS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRCS)
-
-clean:
-	rm -f $(TARGET)
-
+project1: main.c
+	g++ -o project1 main.c -I
