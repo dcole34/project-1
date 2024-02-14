@@ -9,7 +9,7 @@ void runChild(int childNum, int programNum) {
     char programName[10];
     sprintf(programName, "test%d", programNum); // simulates child processes running a program
 
-    printf("Started child %d with pid %d\n", childNumber, getpid());
+    printf("Started child %d with pid %d\n", childNum, getpid());
 
     execlp(programName, programName, NULL); // each child process starts a sample program
 
@@ -67,7 +67,7 @@ int main() {
 
     } else { 
 
-        printf("Parent: waits for child to complete\n\n"); // parent process—wait for child to complete
+        printf("Parent: waits for child to complete\n\n"); // parent processï¿½wait for child to complete
         wait(NULL);
         printf("Child complete\n\n");
 
