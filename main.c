@@ -21,7 +21,7 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
 
 int main(char argc, char **argv) {
 
-    int n;
+    char n;
     n = argv[1];
 
     printf("Program argv[0] is: %s\n", n);
