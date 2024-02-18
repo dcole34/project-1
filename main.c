@@ -3,75 +3,85 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-
-void runChild(int childNum, int programNum) {
+void runChild(int childNum, int programNum) { // simulates child processes running a program
 
     char programName[10];
-    sprintf(programName, "test%d", programNum); // simulates child processes running a program
+    sprintf(programName, "test%d", programNum);
 
-    printf("Started child %d with pid %d\n", childNum, getpid());
+    printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
-    execlp(programName, programName, NULL); // each child process starts a sample program
+    
+    if (execlp(programName, programName, NULL) == -1) { // executes the specified program
 
-    perror("execlp"); 
-    exit(EXIT_FAILURE); // exit
+        perror("execlp");
+        exit(EXIT_FAILURE);
+
+    }
 }
 
-int main() {
-    
-    pid_t parentPid = getpid(); // one additional child process
-    printf("Parent pid is %d\n", parentPid);
+int main(char argc, int **argv) {
+
+    printf("argv value is\n:", argv[0]);
+    pid_t parentPid = getpid();
+    printf("Parent pid is %ld\n", (long)parentPid);
 
     
-    for (int childNum = 1; childNum <= 6; ++childNum) { // using a loop to generate a constant number of child processes
+    for (int childNum = 1; childNum <= 6; ++childNum) { // 6 child processes
+
         pid_t pid = fork();
 
-        if (pid == -1) {
+        
+        if (pid == -1) { // fork failure check (not necessary but helpful)
 
             perror("Fork failed");
-            exit(EXIT_FAILURE); //exit
+            exit(EXIT_FAILURE);
 
         } else if (pid == 0) {
 
-            runChild(childNum, childNum % 5 + 1);  // each child starts one of the sample programs
-            exit(EXIT_SUCCESS);
+            runChild(childNum, childNum % 5 + 1);
+            exit(EXIT_SUCCESS); // exit function for the child process after the program is ran
         }
     }
 
-    
-    for (int i = 0; i < 6; ++i) {
+   
+    for (int i = 0; i < 6; ++i) { // waits for child processes to complete
+
         int status;
-        pid_t finishedChild = waitpid(-1, &status, 0); // the parent process waits for all child processes to complete
+        pid_t finishedChild = waitpid(-1, &status, 0);
 
         
-        if (WIFEXITED(status)) { // distinguishes between individual child processes as they complete their execution.
-            printf("Child %d (PID %d) finished\n", i + 1, finishedChild);
+        if (WIFEXITED(status)) { // makes sure the child process wwas successfully exited
+
+            printf("Child %d (PID %ld) finished\n", i + 1, (long)finishedChild);
+
         }
     }
 
     printf("Parent process exiting\n");
 
     
-    pid_t pid;
-    pid = fork(); // create a child process
+    pid_t pid = fork(); // another child process is created
 
-    if (pid < 0) { 
+    
+    if (pid == -1) { // fork failure check
 
-        fprintf(stderr, "Fork failed"); // fork fail
+        perror("Fork failed");
         return 1;
 
-    } else if (pid == 0) { 
+    } else if (pid == 0) {
 
-        printf("Child: listing of current directory\n\n");
-        execlp("/bin/ls", "ls", NULL);
+        printf("Child: listing of the current directory\n\n");
+        execlp("/bin/ls", "ls", NULL); // runs 'ls' command in the child process
+        perror("execlp"); // execlp failure check
+        exit(EXIT_FAILURE); // exits if execlp fails
 
-    } else { 
+    } else {
 
-        printf("Parent: waits for child to complete\n\n"); // parent process�wait for child to complete
-        wait(NULL);
+        printf("Parent: waits for child to complete\n\n");
+        wait(NULL); // waits for child process to finish
         printf("Child complete\n\n");
 
     }
 
-    return 0;
+    return 0; // Exit the main program
 }
