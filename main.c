@@ -3,12 +3,13 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <string.h>
-
+/*
 #include "test1.c"
 #include "test2.c"
 #include "test3.c"
 #include "test4.c"
 #include "test5.c"
+*/
 
 void runChild(int childNum, int programNum) { // simulates child processes running a program
 
