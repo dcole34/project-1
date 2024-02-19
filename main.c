@@ -8,7 +8,7 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
         
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
-    char* args[] = {"./test1", "./test2", "./test3", "./test4", "./test5"}
+    char* args[] = {"./test1", "./test2", "./test3", "./test4", "./test5"};
     if (programNum == 1){
             //execlp
             execv(arfs[0], "test1", NULL);
