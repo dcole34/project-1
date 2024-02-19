@@ -18,7 +18,7 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
     
-    if (execlp(".test1", "test1", "fork 1", NULLL) == -1) { // executes the specified program
+    if (execlp("/.test1", "test1", "fork 1", NULLL) == -1) { // executes the specified program
 
         perror("execlp");
         exit(EXIT_FAILURE);
