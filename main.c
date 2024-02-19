@@ -7,7 +7,7 @@
 void runChild(int childNum, int programNum) { // simulates child processes running a program
         
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
-    char *args[] = {"./bin/ls", ls, NULL};
+    char *args[] = {"./bin/ls", "ls," NULL};
 
     if (programNum == 1){
             printf("Program argv[5] is: %s\n", args[5]);
