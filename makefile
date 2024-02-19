@@ -1,14 +1,21 @@
-```make
-CC = gcc
-CFLAGS = -Wall
+.PHONY: all
 
-TARGET = main test1 test2 test3 test4 test5
-SRCS = main.c test1.c test2.c test3.c test4.c test5.c
+all: main test1 test2 test3 test4 test5
 
-all: $(TARGET)
+main: main.c
+	gcc -o main.c main.c -I.
 
-$(TARGET): $(SRCS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRCS)
+test1: test1.c
+	gcc -o test1 test1.c -I.
 
-clean:
-	rm -f $(TARGET)
+test2: test2.c
+	gcc -o test2 test2.c -I.
+
+test3: test3.c
+	gcc -o test3 test3.c -I.
+
+test4: test4.c
+	gcc -o test4 test4.c -I.
+
+test5: test5.c
+	gcc -o test5 test5.c -I.
