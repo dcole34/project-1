@@ -18,8 +18,8 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
 
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
-    
-    if (execlp("/.test1", "test1", "fork 1", NULL) == -1) { // executes the specified program
+    if (execlp(programName, programName, NULL) == -1) { // executes the specified program
+    //if (execlp("/.test1", "test1", "fork 1", NULL) == -1) { // executes the specified program
 
         perror("execlp");
         exit(EXIT_FAILURE);
@@ -32,7 +32,7 @@ int main(char argc, char **argv) {
     int userNum;
     userNum = atoi(argv[1]); //user input of no.of child process in the userNum variable
 
-    //printf("Program argv[0] is: %d\n", userNum);
+    printf("Program argv[0] is: %d\n", userNum);
     pid_t parentPid = getpid();
     printf("Parent pid is %ld\n", (long)parentPid);
 
