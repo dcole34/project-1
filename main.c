@@ -11,7 +11,7 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
     char* args[] = {"./test1", "./test2", "./test3", "./test4", "./test5"};
     if (programNum == 1){
             //execlp
-            execv(arfs[0], "test1", NULL);
+            execv(args[0], "test1", NULL);
             if (execlp("./test1", "test1", NULL) == -1){
                 perror("EXECLP ERROR!!!!!!!");
             }
