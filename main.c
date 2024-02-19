@@ -12,14 +12,15 @@
 */
 
 void runChild(int childNum, int programNum) { // simulates child processes running a program
+    printf("programNum is: %d\n", programNum);
 
     char programName[10];
     sprintf(programName, "test%d", programNum);
 
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
-    if (execlp(programName, programName, NULL) == -1) { // executes the specified program
-    //if (execlp("/.test1", "test1", "fork 1", NULL) == -1) { // executes the specified program
+    //if (execlp(programName, programName, NULL) == -1) { // executes the specified program
+    if (execlp("test1", "test1", NULL) == -1) { // executes the specified program
 
         perror("execlp. the error printing is here");
         exit(EXIT_FAILURE);
@@ -48,7 +49,7 @@ int main(char argc, char **argv) {
             exit(EXIT_FAILURE);
 
         } else if (pid == 0) {
-
+        
             runChild(childNum, childNum % 5 + 1); //why childNum % 5+1
             exit(EXIT_SUCCESS); // exit function for the child process after the program is ran
         }
@@ -96,9 +97,36 @@ int main(char argc, char **argv) {
 
     return 0; // Exit the main program
 }
-/*use execv ("./test1, args"); what and why args??
-but it needs to come back to the main.c how?
-
 
 //execlp(".test1", "test1", "fork 1", NULL);
+
+/*
+TODO: 
+to call the test files
+if userNum = 6:
+    child 1 and 6 executes test 1 and child 2-> test2, etc
+add printf("Child ", include which child and PID, " finished");
+printf("Child %d (PID %ld) finished\n", i + 1, (long)finishedChild);
 */
+/*
+
+else if (pid == 0) {
+        if (childNum % 5 == 1){
+            runChild(childNum, test1.c);
+        }
+        else if (childNum % 5 == 2){
+            runChild(childNum, test2.c);
+        }
+        else if (childNum % 5 == 3){
+            runChild(childNum, test3.c);
+        }
+        else if (childNum % 5 == 4){
+            runChild(childNum, test4.c);
+        }
+        else if (childNum % 5 == 0){
+            runChild(childNum, test5.c);
+        }
+
+        exit(EXIT_SUCCESS); // exit function for the child process after the program is ran
+    }
+    */
