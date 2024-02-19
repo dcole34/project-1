@@ -4,6 +4,12 @@
 #include <sys/wait.h>
 #include <string.h>
 
+#include "test1.c"
+#include "test2.c"
+#include "test3.c"
+#include "test4.c"
+#include "test5.c"
+
 void runChild(int childNum, int programNum) { // simulates child processes running a program
 
     char programName[10];
@@ -12,7 +18,7 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
     
-    if (execlp(programName, programName, NULL) == -1) { // executes the specified program
+    if (execlp(".test1", "test1", "fork 1", NULLL) == -1) { // executes the specified program
 
         perror("execlp");
         exit(EXIT_FAILURE);
@@ -23,14 +29,14 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
 int main(char argc, char **argv) {
 
     int userNum;
-    userNum = atoi(argv[1]);
+    userNum = atoi(argv[1]); //user input of no.of child process in the userNum variable
 
-    printf("Program argv[0] is: %d\n", userNum);
+    //printf("Program argv[0] is: %d\n", userNum);
     pid_t parentPid = getpid();
     printf("Parent pid is %ld\n", (long)parentPid);
 
     
-    for (int childNum = 1; childNum <= userNum; ++childNum) { // 6 child processes
+    for (int childNum = 1; childNum <= userNum; ++childNum) { 
 
         pid_t pid = fork();
 
@@ -89,3 +95,8 @@ int main(char argc, char **argv) {
 
     return 0; // Exit the main program
 }
+/*use execv ("./test1, args"); what and why args??
+but it needs to come back to the main.c how?
+
+
+//execlp(".test1", "test1", "fork 1", NULL);
