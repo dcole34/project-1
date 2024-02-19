@@ -22,8 +22,10 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
 
 int main(char argc, char **argv) {
 
-    string userNum = argv[1];
-    printf("Program argv[0] is: %s\n", argv[1]);
+    int userNum;
+    userNum = atoi(argv[1]);
+
+    printf("Program argv[0] is: %s\n", userNum);
     pid_t parentPid = getpid();
     printf("Parent pid is %ld\n", (long)parentPid);
 
