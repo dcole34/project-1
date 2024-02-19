@@ -32,7 +32,7 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
             //execlp
             printf("should be executing test.4\n");
         }
-        else if (programName % 5 == 0){
+        else if (programNum % 5 == 0){
             //execlp
             printf("should be executing test.5\n");
         }
