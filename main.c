@@ -10,7 +10,7 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
     char *args[] = {"./bin/ls", ls, NULL};
 
     if (programNum == 1){
-            printf("Program argv[5] is: %d\n", args[5]);
+            printf("Program argv[5] is: %s\n", args[5]);
             /*execl("./test1", "test1", (char*) NULL);
             if (execlp("./test1", "test1", (char *)NULL) == -1){
                 perror("EXECLP ERROR!!!!!!!");
