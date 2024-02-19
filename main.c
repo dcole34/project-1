@@ -13,9 +13,32 @@
 
 void runChild(int childNum, int programNum) { // simulates child processes running a program
     printf("programNum is: %d\n", programNum);
+    
+    printf("Started child %d with pid %ld\n", childNum, (long)getpid());
+
+    if (programNum % 5 == 1){
+            //execlp
+            printf("should be executing test.1\n");
+        }
+        else if (programNum % 5 == 2){
+            //execlp
+            printf("should be executing test.2\n");
+        }
+        else if (programNum % 5 == 3){
+            //execlp
+            printf("should be executing test.3\n");
+        }
+        else if (programNum % 5 == 4){
+            //execlp
+            printf("should be executing test.4\n");
+        }
+        else if (programName % 5 == 0){
+            //execlp
+            printf("should be executing test.5\n");
+        }
 
     char programName[10];
-    sprintf(programName, "test%d", programNum);
+    //sprintf(programName, "test%d", programNum);
 
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
@@ -50,7 +73,7 @@ int main(char argc, char **argv) {
 
         } else if (pid == 0) {
         
-            runChild(childNum, childNum % 5 + 1); //why childNum % 5+1
+            runChild(childNum, childNum % 5); //why childNum % 5+1
             exit(EXIT_SUCCESS); // exit function for the child process after the program is ran
         }
     }
@@ -108,25 +131,4 @@ if userNum = 6:
 add printf("Child ", include which child and PID, " finished");
 printf("Child %d (PID %ld) finished\n", i + 1, (long)finishedChild);
 */
-/*
 
-else if (pid == 0) {
-        if (childNum % 5 == 1){
-            runChild(childNum, test1.c);
-        }
-        else if (childNum % 5 == 2){
-            runChild(childNum, test2.c);
-        }
-        else if (childNum % 5 == 3){
-            runChild(childNum, test3.c);
-        }
-        else if (childNum % 5 == 4){
-            runChild(childNum, test4.c);
-        }
-        else if (childNum % 5 == 0){
-            runChild(childNum, test5.c);
-        }
-
-        exit(EXIT_SUCCESS); // exit function for the child process after the program is ran
-    }
-    */
