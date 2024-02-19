@@ -12,29 +12,42 @@
 */
 
 void runChild(int childNum, int programNum) { // simulates child processes running a program
-    printf("programNum is: %d\n", programNum);
-    
+        
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
-    if (programNum % 5 == 1){
+    if (programNum == 1){
             //execlp
+            printf("programNum is: %d\n", programNum);
+            printf("child is: %d\n", childNum);
             printf("should be executing test.1\n");
         }
-        else if (programNum % 5 == 2){
+        else if (programNum == 2){
             //execlp
+            printf("programNum is: %d\n", programNum);
+            printf("child is: %d\n", childNum);
             printf("should be executing test.2\n");
+            printf("\n");
         }
-        else if (programNum % 5 == 3){
+        else if (programNum == 3){
             //execlp
+            printf("programNum is: %d\n", programNum);
+            printf("child is: %d\n", childNum);
             printf("should be executing test.3\n");
+            printf("\n");
         }
-        else if (programNum % 5 == 4){
+        else if (programNum == 4){
             //execlp
+            printf("programNum is: %d\n", programNum);
+            printf("child is: %d\n", childNum);
             printf("should be executing test.4\n");
+            printf("\n");
         }
-        else if (programNum % 5 == 0){
+        else if (programNum == 0){
             //execlp
+            printf("programNum is: %d\n", programNum);
+            printf("child is: %d\n", childNum);
             printf("should be executing test.5\n");
+            printf("\n");
         }
 
     char programName[10];
@@ -73,7 +86,7 @@ int main(char argc, char **argv) {
 
         } else if (pid == 0) {
         
-            runChild(childNum, childNum % 5); //why childNum % 5+1
+            runChild(childNum, childNum % 5); 
             exit(EXIT_SUCCESS); // exit function for the child process after the program is ran
         }
     }
