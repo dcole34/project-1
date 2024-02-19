@@ -40,10 +40,10 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
     char programName[10];
     //sprintf(programName, "test%d", programNum);
 
-    printf("Started child %d with pid %ld\n", childNum, (long)getpid());
+    //printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
-    //if (execlp(programName, programName, NULL) == -1) { // executes the specified program
-    if (execlp("test1", "test1", NULL) == -1) { // executes the specified program
+    if (execlp(programName, programName, NULL) == -1) { // executes the specified program
+    //if (execlp("test1", "test1", NULL) == -1) { // executes the specified program
 
         perror("execlp. the error printing is here");
         exit(EXIT_FAILURE);
