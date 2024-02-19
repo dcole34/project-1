@@ -21,12 +21,13 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
 
 int main(char argc, char **argv) {
 
+    string userNum = argv[1];
     printf("Program argv[0] is: %s\n", argv[1]);
     pid_t parentPid = getpid();
     printf("Parent pid is %ld\n", (long)parentPid);
 
     
-    for (int childNum = 1; childNum <= argv[1]; ++childNum) { // 6 child processes
+    for (int childNum = 1; childNum <= userNum; ++childNum) { // 6 child processes
 
         pid_t pid = fork();
 
@@ -44,7 +45,7 @@ int main(char argc, char **argv) {
     }
 
    
-    for (int i = 0; i < argv[1]; ++i) { // waits for child processes to complete
+    for (int i = 0; i < userNum; ++i) { // waits for child processes to complete
 
         int status;
         pid_t finishedChild = waitpid(-1, &status, 0);
