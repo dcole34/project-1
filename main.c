@@ -17,6 +17,10 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
 
     if (programNum == 1){
             //execlp
+            execlp(test.1, test.1, programNum, NULL);
+            if (execlp(test.1, test.1, programNum, NULL) == -1){
+                perror("execlp. the error printing is here");
+            }
             printf("programNum is: %d\n", programNum);
             printf("child is: %d\n", childNum);
             printf("should be executing test.1\n");
@@ -55,10 +59,10 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
 
     //printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
-    if (execlp(programName, programName, NULL) == -1) { // executes the specified program
+    //if (execlp(programName, programName, NULL) == -1) { // executes the specified program
     //if (execlp("test1", "test1", NULL) == -1) { // executes the specified program
 
-        perror("execlp. the error printing is here");
+        //perror("execlp. the error printing is here");
         exit(EXIT_FAILURE);
 
     }
