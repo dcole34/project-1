@@ -17,7 +17,7 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
 
     if (programNum == 1){
             //execlp
-            execlp("test.1", "programNum", NULL);
+            execlp("./test.1", "programNum", NULL);
             if (execlp("./test.1", "programNum", NULL) == -1){
                 perror("execlp. the error printing is here");
             }
