@@ -3,21 +3,15 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <string.h>
-/*
-#include "test1.c"
-#include "test2.c"
-#include "test3.c"
-#include "test4.c"
-#include "test5.c"
-*/
 
 void runChild(int childNum, int programNum) { // simulates child processes running a program
         
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
+    char* args[] = {"./test1", "./test2", "./test3", "./test4", "./test5"}
     if (programNum == 1){
             //execlp
-            execlp("./test1", "test1", NULL);
+            execv(arfs[0], "test1", NULL);
             if (execlp("./test1", "test1", NULL) == -1){
                 perror("EXECLP ERROR!!!!!!!");
             }
@@ -53,19 +47,8 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
             printf("should be executing test.5\n");
             printf("\n");
         }
-
-    char programName[10];
-    //sprintf(programName, "test%d", programNum);
-
-    //printf("Started child %d with pid %ld\n", childNum, (long)getpid());
-
-    //if (execlp(programName, programName, NULL) == -1) { // executes the specified program
-    //if (execlp("test1", "test1", NULL) == -1) { // executes the specified program
-
-        //perror("execlp. the error printing is here");
-        exit(EXIT_FAILURE);
-
-    }
+    exit(EXIT_FAILURE);
+}
 
 int main(char argc, char **argv) {
 
@@ -113,7 +96,7 @@ int main(char argc, char **argv) {
     
     pid_t pid = fork(); // another child process is created
 
-    
+    //dont think we need the following!!!
     if (pid == -1) { // fork failure check
 
         perror("Fork failed");
@@ -136,15 +119,3 @@ int main(char argc, char **argv) {
 
     return 0; // Exit the main program
 }
-
-//execlp(".test1", "test1", "fork 1", NULL);
-
-/*
-TODO: 
-to call the test files
-if userNum = 6:
-    child 1 and 6 executes test 1 and child 2-> test2, etc
-add printf("Child ", include which child and PID, " finished");
-printf("Child %d (PID %ld) finished\n", i + 1, (long)finishedChild);
-*/
-
