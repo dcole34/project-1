@@ -9,7 +9,7 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
     if (programNum == 1){
-            execlp("./test1.c", "test1.c", NULL);
+            execlp("./test1.c", "test1", "test1", NULL);
             //if (execlp("./test1", "test1", NULL) == -1){
             //    perror("EXECLP ERROR!!!!!!!");
             printf("programNum is: %d\n", programNum);
@@ -50,7 +50,7 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
 int main(char argc, char **argv) {
 
     int userNum;
-    userNum = atoi(argv[1]); //user input of no.of child process in the userNum variable
+    userNum = atoi(argv[1]); //user input of child processess
 
     printf("Program argv[0] is: %d\n", userNum);
     pid_t parentPid = getpid();
