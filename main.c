@@ -12,7 +12,6 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
             execlp("./test.c", "test1.c", NULL);
             //if (execlp("./test1", "test1", NULL) == -1){
             //    perror("EXECLP ERROR!!!!!!!");
-            }
             printf("programNum is: %d\n", programNum);
             printf("child is: %d\n", childNum);
             printf("should be executing test.1\n");
