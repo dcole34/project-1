@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <string>
+#include <string.h>
 
 void runChild(int childNum, int programNum) { // simulates child processes running a program
 
