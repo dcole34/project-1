@@ -66,7 +66,6 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
         exit(EXIT_FAILURE);
 
     }
-}
 
 int main(char argc, char **argv) {
 
