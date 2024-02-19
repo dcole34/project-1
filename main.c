@@ -7,12 +7,14 @@
 void runChild(int childNum, int programNum) { // simulates child processes running a program
         
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
+    char *args[] = {"./bin/ls", ls, NULL};
 
     if (programNum == 1){
-            //execl("./test1", "test1", (char*) NULL);
-            if (execl("./test1", "test1", (char *)NULL) == -1){
+            printf("Program argv[5] is: %d\n", args[5]);
+            /*execl("./test1", "test1", (char*) NULL);
+            if (execlp("./test1", "test1", (char *)NULL) == -1){
                 perror("EXECLP ERROR!!!!!!!");
-            }
+            }*/
             printf("programNum is: %d\n", programNum);
             printf("child is: %d\n", childNum);
             printf("should be executing test.1\n");
@@ -93,6 +95,10 @@ int main(char argc, char **argv) {
 
     
     pid_t pid = fork(); // another child process is created
+
+
+
+
 
     //dont think we need the following!!!
     if (pid == -1) { // fork failure check
