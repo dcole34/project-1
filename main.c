@@ -101,3 +101,4 @@ but it needs to come back to the main.c how?
 
 
 //execlp(".test1", "test1", "fork 1", NULL);
+*/
