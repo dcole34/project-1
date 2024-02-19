@@ -25,7 +25,7 @@ int main(char argc, char **argv) {
     int userNum;
     userNum = atoi(argv[1]);
 
-    printf("Program argv[0] is: %ld\n", userNum);
+    printf("Program argv[0] is: %d\n", userNum);
     pid_t parentPid = getpid();
     printf("Parent pid is %ld\n", (long)parentPid);
 
