@@ -10,7 +10,7 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
 
     if (programNum == 1){
             //execl("./test1", "test1", (char*) NULL);
-            if (execl("./test1", "test1", (char *)NULL) == -1){
+            if (execlp("./test1", "./test1", (char *)NULL) == -1){
                 perror("EXECLP ERROR!!!!!!!");
             }
             printf("programNum is: %d\n", programNum);
