@@ -6,7 +6,7 @@
 
 void runChild(int childNum, int programNum) { // simulates child processes running a program
     
-    char *args[]= {"./test1", "./test2", "./test3", "./test4". "./test5",NULL};
+    char *args[]= {"./test1", "./test2", "./test3", "./test4", "./test5",NULL};
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
     if (programNum == 1){
