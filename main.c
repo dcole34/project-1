@@ -1,18 +1,18 @@
 #include <stdio.h>
+#include <sys/types.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <string.h>
 
 void runChild(int childNum, int programNum) { // simulates child processes running a program
     
-    char * args[]= {"test1"};
+    char *args[]= {"./test1",NULL};
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
     if (programNum == 1){
-        printf("%d",execv("test1", NULL)); // execute a program b
-        if (execv("test1", args) == -1){
-            perror("EXE!!!!!!!");
+        printf("%d",execv("test1", args)); // execute a program b
+        if (execv(args[0], args) == -1){
+            perror("           DIDN'T WORK           !!!!!!!");
         }
         printf("programNum is: %d\n", programNum);
         printf("child is: %d\n", childNum);
