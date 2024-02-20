@@ -10,7 +10,7 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
     if (programNum == 1){
-        printf("%d",execv("test1", args, NULL)); // execute a program b
+        printf("%d",execv("test1", NULL)); // execute a program b
         if (execv("test1", args) == -1){
             perror("EXE!!!!!!!");
         }
