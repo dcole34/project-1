@@ -6,46 +6,48 @@
 
 void runChild(int childNum, int programNum) { // simulates child processes running a program
     
-    char *args[]= {"./test1",NULL};
+    char *args[]= {"./test1", "./test2", "./test3", "./test4". "./test5",NULL};
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
     if (programNum == 1){
-        printf("%d",execv("test1", args)); // execute a program b
         if (execv(args[0], args) == -1){
-            perror("           DIDN'T WORK           !!!!!!!");
+            perror("EXECV error!!!");
+            }
+            else (execve(args[0], args, NULL));
+            exit(0);
         }
-        printf("programNum is: %d\n", programNum);
-        printf("child is: %d\n", childNum);
-        printf("should be executing test.1\n");
+
+    else if (programNum == 2){
+        if (execv(args[1], args) == -1){
+            perror("EXECV error!!!");
+        }
+        else (execve(args[1], args, NULL));
+            exit(0);
+    }
+
+    else if (programNum == 3){
+        if (execv(args[2], args) == -1){
+            perror("EXECV error!!!");
+        }
+        else (execve(args[2], args, NULL));
         exit(0);
+    }
+
+    else if (programNum == 4){
+        if (execv(args[3], args) == -1){
+            perror("EXECV error!!!");
         }
-        else if (programNum == 2){
-            printf("programNum is: %d\n", programNum);
-            printf("child is: %d\n", childNum);
-            printf("should be executing test.2\n");
-            printf("\n");
+        else (execve(args[3], args, NULL));
+        exit(0);
+    }
+
+    else if (programNum == 0){
+        if (execv(args[4], args) == -1){
+            perror("EXECV error!!!");
         }
-        else if (programNum == 3){
-            //execlp
-            printf("programNum is: %d\n", programNum);
-            printf("child is: %d\n", childNum);
-            printf("should be executing test.3\n");
-            printf("\n");
-        }
-        else if (programNum == 4){
-            //execlp
-            printf("programNum is: %d\n", programNum);
-            printf("child is: %d\n", childNum);
-            printf("should be executing test.4\n");
-            printf("\n");
-        }
-        else if (programNum == 0){
-            //execlp
-            printf("programNum is: %d\n", programNum);
-            printf("child is: %d\n", childNum);
-            printf("should be executing test.5\n");
-            printf("\n");
-        }
+        else (execve(args[4], args, NULL));
+        exit(0);
+    }
     exit(EXIT_FAILURE);
 }
 
