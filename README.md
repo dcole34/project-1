@@ -12,6 +12,6 @@ __Daniel Coleman__ *and* __Fazida Ashraf C. Puthiyapurayil__
         gcc test5.c -o test5
   
     To execute:
-        ./main *<no.of children>*
+        ./main <no.of children>
 
 __(side note: required -lm for test2.c for compiling without "undefined reference to swrt" error)__
