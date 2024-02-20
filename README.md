@@ -1,6 +1,6 @@
 # README - project-1
 ## Group09_DC_FP:
-__Daniel Coleman *and* Fazida Ashraf C. Puthiyapurayil__
+__Daniel Coleman__ *and* __Fazida Ashraf C. Puthiyapurayil__
 
 ### Commands to run in the terminal.
     For compiling:
