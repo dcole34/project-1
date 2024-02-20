@@ -3,8 +3,8 @@ all: main test1 test2 test3 test4 test5
 main: main.o
 	gcc main.o -o main -I.
 
-test1: test1.o
-	gcc test1.o test1 -I.
+test1: test1.c
+	gcc test1.c test1 -I.
 
 test2: test2.o
 	gcc test2.o test2 -I. -lm
