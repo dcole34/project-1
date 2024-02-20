@@ -11,7 +11,7 @@ void runChild(int childNum, int programNum) { // simulates child processes runni
 
     if (programNum == 1){
         printf("%d",execv("test1", args)); // execute a program b
-        if (execv("./test1", "./test1", NULL) == -1){
+        if (execv("test1", args) == -1){
             perror("EXE!!!!!!!");
         }
         printf("programNum is: %d\n", programNum);
