@@ -2,7 +2,7 @@
 ## Group09_DC_FP:
 __Daniel Coleman__ *and* __Fazida Ashraf C. Puthiyapurayil__
 
-### Commands to run in the terminal.
+### Commands to run in the terminal:
     For compiling:
         gcc main.c -o main
         gcc test1.c -o test1
