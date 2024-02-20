@@ -14,4 +14,4 @@ __Daniel Coleman__ *and* __Fazida Ashraf C. Puthiyapurayil__
     To execute:
         ./main *<no.of children>*
 
-__(side note: required -lm for test2.c to compile "undefined reference to swrt" error)__
+__(side note: required -lm for test2.c for compiling without "undefined reference to swrt" error)__
