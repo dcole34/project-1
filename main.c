@@ -56,7 +56,6 @@ int main(char argc, char **argv) {
     int userNum;
     userNum = atoi(argv[1]); //user input of child processess
 
-    printf("Program argv[0] is: %d\n", userNum);
     pid_t parentPid = getpid();
     printf("Parent pid is %ld\n", (long)parentPid);
 
@@ -96,31 +95,6 @@ int main(char argc, char **argv) {
 
     
     pid_t pid = fork(); // another child process is created
-
-
-
-
-
-    //dont think we need the following!!!
-    if (pid == -1) { // fork failure check
-
-        perror("Fork failed");
-        return 1;
-
-    } else if (pid == 0) {
-
-        printf("Child: listing of the current directory\n\n");
-        execlp("/bin/ls", "ls", NULL); // runs 'ls' command in the child process
-        perror("execlp"); // execlp failure check
-        exit(EXIT_FAILURE); // exits if execlp fails
-
-    } else {
-
-        printf("Parent: waits for child to complete\n\n");
-        wait(NULL); // waits for child process to finish
-        printf("Child complete\n\n");
-
-    }
 
     return 0; // Exit the main program
 }
