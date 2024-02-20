@@ -5,20 +5,21 @@
 #include <string.h>
 
 void runChild(int childNum, int programNum) { // simulates child processes running a program
-        
+    
+    char * args[]= {"test1"};
     printf("Started child %d with pid %ld\n", childNum, (long)getpid());
 
     if (programNum == 1){
-            execl("./test1", "test1",NULL);
-            if (execlp("./test1", "./test1", NULL) == -1){
-                perror("EXECLP ERROR!!!!!!!");
-            }
-            printf("programNum is: %d\n", programNum);
-            printf("child is: %d\n", childNum);
-            printf("should be executing test.1\n");
+        printf("%d",execv("test1", args)); // execute a program b
+        if (execv("./test1", "./test1", NULL) == -1){
+            perror("EXE!!!!!!!");
+        }
+        printf("programNum is: %d\n", programNum);
+        printf("child is: %d\n", childNum);
+        printf("should be executing test.1\n");
+        exit(0);
         }
         else if (programNum == 2){
-            //execlp
             printf("programNum is: %d\n", programNum);
             printf("child is: %d\n", childNum);
             printf("should be executing test.2\n");
